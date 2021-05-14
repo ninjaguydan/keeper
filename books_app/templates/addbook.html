@@ -1,0 +1,78 @@
+{% extends 'base.html'  %}
+
+{% block nav %}
+<div class="btn-group">
+    <button type="button" class="btn btn-secondary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{user.first_name}}
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="/books/users/{{user.id}}">Profile</a>
+        <a class="dropdown-item" href="/books/addbook">Add Book & Review</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/books/logout">Logout</a>
+        {% if user.id == 1 %}
+        <a class="dropdown-item" href="/books/admin">Admin</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="add-book">
+    <h3 class="page-head">Add a New Book</h3>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="/books/addbook/add" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <label>Book Title</label>
+            <div>
+                <input type="text" name="title" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <label>Author:</label>
+            <div>
+                <select name="author" class="form-control">
+                    {% for author in authors %}
+                    <option value="{{author.name}}">{{author.name}}</option>
+                    {% endfor %}
+                </select>
+                <p>Or add a new author</p>
+                <input type="text" name="new_author" class="form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <label>Description</label>
+            <div>
+                <textarea name="desc" rows="5" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <label>Review</label>
+            <div>
+                <textarea name="review" rows="5" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <label>Rating</label>
+            <select name="rating" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="btn-container">
+            <button class="btn btn-primary">Add Book</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

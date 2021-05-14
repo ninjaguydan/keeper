@@ -1,0 +1,199 @@
+* {
+    /* outline: 1px dotted magenta; */
+    --primary: #6633CC;
+    --secondary: #4D6EDC;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e3eaee;
+}
+a {
+    text-decoration: none;
+    color: var(--primary);
+}
+a.dropdown-item {
+    font-size: 0.75em;
+    padding: .5rem 1rem;
+}
+h5 {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    color: var(--secondary);
+}
+label {
+    margin-top: 15px;
+}
+span {
+    color: var(--secondary);
+    font-size: 1.25em;
+}
+.add-book {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+.bg-light {
+    background-color: white !important;
+}
+.btn-container {
+    margin-top: 15px;
+}
+    .btn-container .btn {
+        margin-top: 15px;
+    }
+.btn {
+    padding: .5rem 1rem;
+    width: 100%;
+}
+.btn-nav {
+    width: 160px;
+}
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+    .btn-primary:hover {
+        background-color: #6f38df;
+        border-color: #6f38df;
+    }
+.btn-secondary {
+    color: var(--secondary);
+    background-color: transparent;
+    border: 2px solid var(--secondary);
+}
+    .btn-secondary:hover {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+    }
+.center {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+.container {
+    padding: 30px;
+}
+.date {
+    color: grey;
+    font-size: 0.75em;
+    font-style: italic;
+}
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgb(102 51 204 / 25%);;
+}
+    .form-row p {
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+.header-logo {
+    width: 150px;
+}
+.info-card {
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 1rem 1.5rem;
+    border-radius: .25rem;
+}
+    .info-card h2 {
+        margin-bottom: 0.5rem;
+    }
+    .info-card p {
+        margin: 0;
+    }
+.list-group {
+    width: 100%;
+}
+    .list-group-item {
+        padding: 1rem 1.5rem;
+    }
+    .list-group-item h4 {
+        line-height: 1.5em;
+        margin: 0;
+    }
+.logres {
+    background-color: white;
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+    .logres-bg {
+        background: url('img/bg.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+.navbar {
+    padding: .5rem 1.25rem;
+}
+.page-head {
+    font-weight: 600;
+    margin: 0;
+}
+.profile {
+    width: 100%;
+}
+.review {
+    width: 100%;
+}
+a.review-head, label.review-head {
+    font-size: 1.25em;
+    font-weight: 500;
+}
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/*-------------------------- ipad/ tablet --------------------------*/
+@media only screen and (min-width: 650px) {
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn {
+        width: 48%;
+    }
+    .btn-nav {
+        width: 160px;
+    }
+    .logres {
+        width: 70%;
+    }
+    
+}
+
+
+/*-------------------------- desktop --------------------------*/
+@media only screen and (min-width: 900px) {
+    .add-book {
+        width: 600px;
+    }
+    .column {
+        width: 50%;
+    }
+        .review .list-group {
+            width: 100%;
+        }
+    .list-group {
+        width: 50%;
+    }
+    .list-group.books, .review {
+        width: 40%;
+    }
+    .logres, .profile {
+        width: 630px;
+    }
+    .profile {
+        margin: 0 auto;
+    }
+        .profile .list-group {
+            width: 100%;
+        }
+}

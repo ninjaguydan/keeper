@@ -1,0 +1,55 @@
+{% extends 'base.html'  %}
+
+
+{% block nav %}
+{% if request.session.userid == 0 %}
+<div class="btn-group">
+    <button type="button" class="btn btn-secondary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dummi
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="/books/logout">Logout</a>
+    </div>
+</div>
+{% else %}
+<div class="btn-group">
+    <button type="button" class="btn btn-secondary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{user.first_name}}
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="/books/users/{{user.id}}">Profile</a>
+        <a class="dropdown-item" href="/books/addbook">Add Book & Review</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/books/logout">Logout</a>
+        {% if user.id == 1 %}
+        <a class="dropdown-item" href="/books/admin">Admin</a>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <ul class="list-group" style="margin-bottom: 30px;">
+        <li class="list-group-item"><h3 class="page-head">Recent Book Reviews</h3></li>
+        {% for review in reviews %}
+        <li class="list-group-item">
+            <a class="review-head" href="/books/{{review.book.id}}">{{review.book.title}}</a><br>
+            <span class="n{{review.rating}}">Rating: {{review.rating}}</span>
+            <p><a href="/books/users/{{review.user.id}}">{{review.user.first_name}}</a> says: {{review.content}}</p>
+            <p class="date">{{review.created_at}}</p>
+        </li>
+        {% empty %}
+        <li>No reviews yet!</li>
+        {% endfor %}
+    </ul>
+
+    <ul class="list-group books">
+        <li class="list-group-item"><h3 class="page-head">Other Books with Reviews</h3></li>
+        {% for book in books %}
+        <li class="list-group-item"><a href="/books/{{book.id}}">{{book.title}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

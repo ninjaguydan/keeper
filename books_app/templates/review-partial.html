@@ -1,0 +1,13 @@
+<li class="list-group-item"><h3 class="page-head">Reviews</h3></li>
+    {% for review in book.reviews.all reversed %}
+    <li class="list-group-item">
+        <forjs book="{{book.id}}" review="{{review.id}}"></forjs>
+        <span class="n{{review.rating}}">Rating: {{review.rating}}</span>
+        <p><a href="/books/users/{{review.user.id}}">{{review.user.first_name}}</a> says: {{review.content}}</p>
+        <p class="date">{{review.created_at}}</p>
+        <!-- <p><a class="like" href="/books/review/{{review.id}}/like"  style="{% for like in review.likes.all %}{% if user.id == like.user.id %} color:red; {% else %} color:gray; {% endif %}{% endfor %}" >&hearts;</a> {{review.likes.all|length}}</p> -->
+        {% if review.user.id == request.session.userid %}
+        <a href="/books/review/{{review.id}}">Delete</a>
+        {% endif %}
+    </li>
+    {% endfor %}
